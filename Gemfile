@@ -49,3 +49,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.8"
+
+gem "nokogiri", "~> 1.11"
+
+gem "open-uri", "~> 0.1.0"
+
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'

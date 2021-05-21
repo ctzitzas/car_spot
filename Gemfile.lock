@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 3f78cb13cfa5eaa811b7d05f9df46e7f27bab348
+  branch: master
+  specs:
+    faker (2.18.0)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -99,6 +107,7 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.11.4-x86_64-darwin)
       racc (~> 1.4)
+    open-uri (0.1.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
     puma (5.3.1)
@@ -211,8 +220,11 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   devise (~> 4.8)
+  faker!
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  nokogiri (~> 1.11)
+  open-uri (~> 0.1.0)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

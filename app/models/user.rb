@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :listings, dependent: :destroy
-  has_many :transactions, dependent: :destroy
+  has_many :purchases, dependent: :destroy
+  has_one :profile, dependent: :destroy
   validates :username, presence: true, uniqueness: true, format: { with: /\A\w+\z/, message: 'Username can only have alphanumeric characters' }
 end
