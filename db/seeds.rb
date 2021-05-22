@@ -29,17 +29,17 @@ bom_data_links.each do |state, link|
   end
 end
 
+puts 'Creating users, profiles and listings'
+
 10.times {
-  puts 'Creating User'
   user = User.create(
     username: Faker::Internet.username,
     email: Faker::Internet.safe_email,
     password: Faker::Internet.password(min_length: 8)
   )
 
-  puts 'Creating profile'
   offset = rand(Location.count)
-  user.profile.create(
+  profile = user.create_profile(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     status: rand(1..4),
@@ -48,8 +48,7 @@ end
 
   make = Faker::Vehicle.make
 
-  puts 'Creating listing'
-  user.listings.create(
+  listing = user.listings.create(
     ad_type: 1,
     status: 1,
     price: rand(10..1000) * 1000,
@@ -68,3 +67,4 @@ end
   )
 }
 
+puts 'Seeding succesfull!'

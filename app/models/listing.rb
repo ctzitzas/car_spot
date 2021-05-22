@@ -1,6 +1,6 @@
 class Listing < ApplicationRecord
   belongs_to :user
-  has_one :purchase, dependent: :destroy
+  has_one :purchase
   validates :ad_type, :status, :price, :year, :make, :model, :roadworthy, :condition, :description, presence: true
   enum ad_type: { selling: 1, wanted: 2, }
   enum status: { active: 1, inactive: 2, sold: 3 }
