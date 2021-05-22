@@ -55,3 +55,5 @@ gem "nokogiri", "~> 1.11"
 gem "open-uri", "~> 0.1.0"
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+gem "enum_select_rails", "~> 0.3.0"

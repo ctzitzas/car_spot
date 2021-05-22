@@ -1,0 +1,22 @@
+<h1><%= @listing.ad_type.capitalize %> - <%= @listing.year %> <%= @listing.make %> <%= @listing.model %> </h1>
+<h2><%= number_to_currency(@listing.price) %></h2>
+
+<%# Images go in here %>
+
+<p>Odometer - <%= @listing.odometer %></p>
+<p>Engine - <%= @listing.engine %></p>
+<p>Transmission - <%= @listing.transmission %></p>
+<p>Trim - <%= @listing.trim %></p>
+<p>Body style - <%= @listing.body_style %></p>
+<p>Registration - <%= @listing.registration_number %></p>
+<p>Roadworthy - <%= @listing.roadworthy %></p>
+<p>Condition - <%= @listing.condition %></p>
+
+<p><%= @listing.description %></p>
+
+<h3>Seller info</h3>
+<p> <%= @profile.user.username %></p>
+<p> <%= @profile.location.state %> - <%= @profile.location.region %></p>
+<p> <%= @profile.status %></p>
+
+<%= link_to 'Back', listings_path %>

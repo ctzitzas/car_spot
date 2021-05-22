@@ -83,6 +83,11 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
+    enum_select_rails (0.3.0)
+      enum_help
+      rails
     erubi (1.10.0)
     ffi (1.15.0)
     globalid (0.4.2)
@@ -220,6 +225,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   devise (~> 4.8)
+  enum_select_rails (~> 0.3.0)
   faker!
   jbuilder (~> 2.7)
   listen (~> 3.3)

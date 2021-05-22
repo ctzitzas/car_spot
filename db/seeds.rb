@@ -29,7 +29,22 @@ bom_data_links.each do |state, link|
   end
 end
 
-puts 'Creating users, profiles and listings'
+puts 'Creating test account'
+
+user = User.create(
+  username: 'ctzitzas',
+  email: 'ctzitzas@gmail.com',
+  password: 'password123'
+)
+
+profile = user.create_profile(
+  first_name: 'Chris',
+  last_name: 'Tzitzas',
+  status: 1,
+  location: Location.find(93)
+)
+
+puts 'Creating fake users, profiles and listings'
 
 10.times {
   user = User.create(
@@ -51,7 +66,7 @@ puts 'Creating users, profiles and listings'
   listing = user.listings.create(
     ad_type: 1,
     status: 1,
-    price: rand(10..1000) * 1000,
+    price: rand(10..1000) * 100,
     year: Faker::Vehicle.year,
     make: make,
     model: Faker::Vehicle.model(make_of_model: make),

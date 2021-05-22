@@ -6,4 +6,5 @@ class Listing < ApplicationRecord
   enum status: { active: 1, inactive: 2, sold: 3 }
   enum roadworthy: { supplied: 1, pending: 2, unavailable: 3 }
   enum condition: { poor: 1, good: 2, excellent: 3, pristine: 4 }
+  scope :active, -> { where(status:1) }
 end
