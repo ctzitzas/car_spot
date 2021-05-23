@@ -1,0 +1,67 @@
+<h1>Create new listing</h1>
+
+<ul>
+  <% @listing.errors.full_messages.each do |message| %>
+    <li style='color: red'><%= message %></li>
+  <% end %>
+</ul>
+
+<%= form_with model: @listing, local:true do |form| %>
+  <div>
+    <%= form.label :ad_type %><br>
+    <%= form.enum_select :ad_type %>
+  </div>
+  <div>
+    <%= form.label :year %><br>
+    <%= form.number_field :year, min: 1900, max:2000, step: 1 %>
+  </div>
+  <div>
+    <%= form.label :make %><br>
+    <%= form.text_field :make %>
+  </div>
+  <div>
+    <%= form.label :model %><br>
+    <%= form.text_field :model %>
+  </div>
+  <div>
+    <%= form.label :price %><br>
+    <%= form.number_field :price, min: 5, step: 5 %>
+  </div>
+  <div>
+    <%= form.label :odometer %><br>
+    <%= form.text_field :odometer %>
+  </div>
+  <div>
+    <%= form.label :engine %><br>
+    <%= form.text_field :engine %>
+  </div>
+  <div>
+    <%= form.label :transmission %><br>
+    <%= form.text_field :transmission %>
+  </div>
+  <div>
+    <%= form.label :trim %><br>
+    <%= form.text_field :trim %>
+  </div>
+  <div>
+    <%= form.label :body_style %><br>
+    <%= form.text_field :body_style %>
+  </div>
+  <div>
+    <%= form.label :registraion_number %><br>
+    <%= form.text_field :registration_number %>
+  </div>
+  <div>
+    <%= form.label :roadworthy %><br>
+    <%= form.enum_select :roadworthy %>
+  </div>
+  <div>
+    <%= form.label :condition %><br>
+    <%= form.enum_select :condition %>
+  </div>
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </div>
+    <%= form.submit %>
+<% end %>

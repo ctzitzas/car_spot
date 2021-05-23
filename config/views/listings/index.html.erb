@@ -1,0 +1,9 @@
+<h1>Car for sale</h1>
+
+<ul>
+  <% @listings.each do |listing| %>
+    <li><%= listing.year %> <%= listing.make %> <%= listing.model %> | <%= number_to_currency(listing.price) %> <%= link_to "Show", listing %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a new listing", new_listing_path %>
