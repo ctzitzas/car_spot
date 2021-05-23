@@ -9,14 +9,14 @@
 <p>Trim - <%= @listing.trim %></p>
 <p>Body style - <%= @listing.body_style %></p>
 <p>Registration - <%= @listing.registration_number %></p>
-<p>Roadworthy - <%= @listing.roadworthy %></p>
-<p>Condition - <%= @listing.condition %></p>
+<p>Roadworthy - <%= @listing.roadworthy.capitalize %></p>
+<p>Condition - <%= @listing.condition.capitalize %></p>
 
 <p><%= @listing.description %></p>
 
 <h3>Seller info</h3>
 <p> <%= @profile.user.username %></p>
 <p> <%= @profile.location.state %> - <%= @profile.location.region %></p>
-<p> <%= @profile.status %></p>
+<p> <%= @profile.status.capitalize %></p>
 
 <%= link_to 'Back', listings_path %>

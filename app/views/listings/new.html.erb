@@ -1,13 +1,19 @@
 <h1>Create new listing</h1>
 
-<%= form_with model: @listing do |form| %>
+<ul>
+  <% @listing.errors.full_messages.each do |message| %>
+    <li style='color: red'><%= message %></li>
+  <% end %>
+</ul>
+
+<%= form_with model: @listing, local:true do |form| %>
   <div>
     <%= form.label :ad_type %><br>
     <%= form.enum_select :ad_type %>
   </div>
   <div>
     <%= form.label :year %><br>
-    <%= form.number_field :year, min: 1900, max:1990, step: 1 %>
+    <%= form.number_field :year, min: 1900, max:2000, step: 1 %>
   </div>
   <div>
     <%= form.label :make %><br>
