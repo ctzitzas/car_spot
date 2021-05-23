@@ -14,4 +14,10 @@
  *= require_self
  */
 
- @import 'bootstrap/scss/bootstrap'
+ @import 'bootstrap/scss/bootstrap';
+
+ .nav-username {
+   color: red;
+   display: flex;
+   margin: 0px;
+ }
