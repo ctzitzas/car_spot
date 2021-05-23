@@ -1,3 +1,19 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.hero-container {
+  border: 1px solid black;
+  height: 400px;
+  width: 100%;
+  margin-bottom: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero {
+  height: 400px;
+  width: 1000px;
+  border: 1px solid red;
+}
