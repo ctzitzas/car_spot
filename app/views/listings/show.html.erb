@@ -30,9 +30,9 @@
 <div>
   <h3>Seller info</h3>
   <p> <%= @profile.user.username %></p>
-  <p> <%= @profile.location.state %> - <%= @profile.location.region %></p>
-  <p> <%= @profile.status.capitalize %></p>
-  <p> Ad posted <%= time_ago_in_words(@listing.created_at) %> ago </p>
+  <p> <%= @profile.location.region %></p>
+  <p> <%= @profile.user_type.capitalize %></p>
+  <p> Posted <%= time_ago_in_words(@listing.created_at) %> ago </p>
 </div>
 
 <%= link_to 'Back', listings_path %>
