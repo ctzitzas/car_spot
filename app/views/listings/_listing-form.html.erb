@@ -61,5 +61,9 @@
     <%= form.label :description %><br>
     <%= form.text_area :description %>
   </div>
-    <%= form.submit %>
+  <div>
+   <%= form.label :images %>
+   <%= form.file_field :images, accept: 'image/png, image/jpg, image/jpeg' %>
+  </div>
+  <%= form.submit %>
 <% end %>
