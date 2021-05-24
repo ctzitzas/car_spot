@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @listings = Listing.active
@@ -21,15 +23,32 @@ class ListingsController < ApplicationController
   def edit
   end
 
+  def update
+    if @listing.update(listing_params)
+      redirect_to @listing
+    else
+      render :edit
+    end
+  end
+
   def show
-    @listing = Listing.find(params[:id])
     @profile = Profile.find(@listing.user.id)
+  end
+
+  def destroy
+    @listing.destroy
+    flash[:alert] = 'Successfully Deleted'
+    redirect_to listings_path
   end
 
   private
 
   def listing_params
     params.require(:listing).permit(:ad_type, :year, :make, :model, :price, :odometer, :engine, :transmission, :trim, :body_style, :registration_number, :roadworthy, :condition, :description)
+  end
+
+  def set_listing
+    @listing = Listing.find(params[:id])
   end
 
 end
