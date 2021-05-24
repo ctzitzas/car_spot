@@ -1,26 +1,38 @@
 <h1><%= @listing.ad_type.capitalize %> - <%= @listing.year %> <%= @listing.make %> <%= @listing.model %> </h1>
 <h2><%= number_to_currency(@listing.price) %></h2>
 
+<div>
+  <% if can? :update, @listing %>
+    <%= link_to 'Edit', edit_listing_path(@listing) %>
+  <% end %>
+  <% if can? :update, @listing %>
+    <%= link_to 'Delete', listing_path(@listing), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>
+
 <%# Images go in here %>
-<%= @listing.images.attached? ? (image_tag @listing.images.first, alt:'Image of car for sale') : (image_tag 'default_car', alt:'Default car image') %>
+<div>
+  <%= @listing.images.attached? ? (image_tag @listing.images.first, alt:'Image of car for sale') : (image_tag 'default_car', alt:'Default car image') %>
+</div>
 
-<p>Odometer - <%= @listing.odometer %></p>
-<p>Engine - <%= @listing.engine %></p>
-<p>Transmission - <%= @listing.transmission %></p>
-<p>Trim - <%= @listing.trim %></p>
-<p>Body style - <%= @listing.body_style %></p>
-<p>Registration - <%= @listing.registration_number %></p>
-<p>Roadworthy - <%= @listing.roadworthy.capitalize %></p>
-<p>Condition - <%= @listing.condition.capitalize %></p>
+<div>
+  <p>Odometer - <%= @listing.odometer %></p>
+  <p>Engine - <%= @listing.engine %></p>
+  <p>Transmission - <%= @listing.transmission %></p>
+  <p>Trim - <%= @listing.trim %></p>
+  <p>Body style - <%= @listing.body_style %></p>
+  <p>Registration - <%= @listing.registration_number %></p>
+  <p>Roadworthy - <%= @listing.roadworthy.capitalize %></p>
+  <p>Condition - <%= @listing.condition.capitalize %></p>
+  <p><%= @listing.description %></p>
+</div>
 
-<p><%= @listing.description %></p>
+<div>
+  <h3>Seller info</h3>
+  <p> <%= @profile.user.username %></p>
+  <p> <%= @profile.location.state %> - <%= @profile.location.region %></p>
+  <p> <%= @profile.status.capitalize %></p>
+  <p> Ad posted <%= time_ago_in_words(@listing.created_at) %> ago </p>
+</div>
 
-<h3>Seller info</h3>
-<p> <%= @profile.user.username %></p>
-<p> <%= @profile.location.state %> - <%= @profile.location.region %></p>
-<p> <%= @profile.status.capitalize %></p>
-<p> Ad posted <%= time_ago_in_words(@listing.created_at) %> ago </p>
-
-<%= link_to 'Edit', edit_listing_path %>
 <%= link_to 'Back', listings_path %>
-<%= link_to 'Delete', listing_path(@listing), method: :delete, data: { confirm: 'Are you sure?' } %>

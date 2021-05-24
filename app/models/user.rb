@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :purchases, dependent: :destroy
   has_one :profile, dependent: :destroy
   validates :username, presence: true, uniqueness: true
+  attribute :admin, :boolean, default: false
 end

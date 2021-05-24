@@ -59,3 +59,5 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem "enum_select_rails", "~> 0.3.0"
 
 gem "aws-sdk-s3", "~> 1.95"
+
+gem "cancan", "~> 1.6"

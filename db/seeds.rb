@@ -29,6 +29,22 @@ bom_data_links.each do |state, link|
   end
 end
 
+puts 'Creating admin account'
+
+user = User.create(
+  username: 'admin',
+  email: 'admin@gmail.com',
+  password: 'password123',
+  admin: true
+)
+
+profile = user.create_profile(
+  first_name: 'Admin',
+  last_name: 'Tester',
+  status: 1,
+  location: Location.find(93)
+)
+
 puts 'Creating test account'
 
 user = User.create(
@@ -53,6 +69,8 @@ puts 'Creating fake users, profiles and listings'
     password: Faker::Internet.password(min_length: 8)
   )
 
+  puts user.errors.full_messages
+
   offset = rand(Location.count)
   profile = user.create_profile(
     first_name: Faker::Name.first_name,
@@ -60,6 +78,7 @@ puts 'Creating fake users, profiles and listings'
     status: rand(1..4),
     location: Location.offset(offset).first
   )
+  puts profile.errors.full_messages
 
   make = Faker::Vehicle.make
 
@@ -80,6 +99,7 @@ puts 'Creating fake users, profiles and listings'
     condition: rand(1..4),
     description: Faker::Vehicle.standard_specs[0]
   )
+  puts listing.errors.full_messages
 }
 
 puts 'Seeding succesfull!'

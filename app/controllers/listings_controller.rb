@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
+  # load_and_authorize_resource
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-
 
   def index
     @listings = Listing.active
@@ -21,6 +21,7 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    authorize! :update, @listing
   end
 
   def update
@@ -36,6 +37,7 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+    authorize! :update, @listing
     @listing.destroy
     flash[:alert] = 'Successfully Deleted'
     redirect_to listings_path
