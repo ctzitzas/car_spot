@@ -1,5 +1,6 @@
 class Listing < ApplicationRecord
   belongs_to :user
+  has_many_attached :images
   has_one :purchase
   validates :ad_type, :status, :price, :year, :make, :model, :roadworthy, :condition, :description, presence: true
   attribute :status, :integer, default: 1

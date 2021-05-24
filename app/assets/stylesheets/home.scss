@@ -4,16 +4,18 @@
 
 .hero-container {
   border: 1px solid black;
-  height: 400px;
+  height: 800px;
   width: 100%;
-  margin-bottom: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0px;
+  padding: 0px;
 }
 
 .hero {
-  height: 400px;
-  width: 1000px;
+  height: 100px;
+  width: 80%;
   border: 1px solid red;
 }
+

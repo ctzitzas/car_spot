@@ -2,6 +2,7 @@
 <h2><%= number_to_currency(@listing.price) %></h2>
 
 <%# Images go in here %>
+<%= @listing.images.attached? ? (image_tag @listing.images.first, alt:'Image of car for sale') : (image_tag 'default_car', alt:'Default car image') %>
 
 <p>Odometer - <%= @listing.odometer %></p>
 <p>Engine - <%= @listing.engine %></p>
