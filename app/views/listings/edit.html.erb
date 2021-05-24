@@ -1,2 +1,3 @@
-<h1>Listings#edit</h1>
-<p>Find me in app/views/listings/edit.html.erb</p>
+<h1>Edit <%= @listing.year %> <%= @listing.make %> <%= @listing.model %></h1>
+
+<%= render 'listing-form', listing: @listing %>

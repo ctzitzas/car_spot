@@ -20,4 +20,6 @@
 <p> <%= @profile.location.state %> - <%= @profile.location.region %></p>
 <p> <%= @profile.status.capitalize %></p>
 
+<%= link_to 'Edit', edit_listing_path %>
 <%= link_to 'Back', listings_path %>
+<%= link_to 'Delete', listing_path(@listing), method: :delete, data: { confirm: 'Are you sure?' } %>
