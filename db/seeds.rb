@@ -13,21 +13,25 @@ puts 'Seeding started'
 puts 'Creating Locations'
 
 bom_data_links = {
-  'New South Wales' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDN11020.xml',
-  'Queensland' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDQ10606.xml',
-  'South Australia' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDS11055.xml',
-  'Tasmania' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDT16000.xml',
-  'Victoria' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDV10750.xml',
-  'Western Australia' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDW13010.xml'
+  'NSW' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDN11020.xml',
+  'QLD' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDQ10606.xml',
+  'SA' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDS11055.xml',
+  'TAS' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDT16000.xml',
+  'VIC' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDV10750.xml',
+  'WA' => 'ftp://ftp.bom.gov.au/anon/gen/fwo/IDW13010.xml'
 }
 
 bom_data_links.each do |state, link|
   region_data = Hash.from_xml(Nokogiri::XML(URI.open(link)).to_s)
   regions = region_data['product']['forecast']['area'].map{|h| h['description']}.drop(1)
   regions.each do |region|
-    Location.create(state: state, region: region)
+    Location.create(state: state, region: state + ' - ' + region)
   end
 end
+
+Location.create(state: 'NT', region: 'NT - North')
+Location.create(state: 'NT', region: 'NT - Central')
+Location.create(state: 'NT', region: 'NT - South')
 
 puts 'Creating admin account'
 

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :listings, dependent: :destroy
   has_many :purchases, dependent: :destroy
   has_one :profile, dependent: :destroy
+  accepts_nested_attributes_for :profile
   validates :username, presence: true, uniqueness: true
   attribute :admin, :boolean, default: false
 end
