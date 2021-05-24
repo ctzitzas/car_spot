@@ -1,5 +1,4 @@
 class ListingsController < ApplicationController
-  # load_and_authorize_resource
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 

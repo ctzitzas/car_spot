@@ -2,10 +2,10 @@
 <h2><%= number_to_currency(@listing.price) %></h2>
 
 <div>
-  <% if can? :update, @listing %>
+  <% if can? :update, Listing %>
     <%= link_to 'Edit', edit_listing_path(@listing) %>
   <% end %>
-  <% if can? :update, @listing %>
+  <% if can? :update, Listing %>
     <%= link_to 'Delete', listing_path(@listing), method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 </div>
