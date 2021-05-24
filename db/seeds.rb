@@ -45,7 +45,7 @@ user = User.create(
 profile = user.create_profile(
   first_name: 'Admin',
   last_name: 'Tester',
-  status: 1,
+  user_type: 1,
   location: Location.find(93)
 )
 
@@ -60,7 +60,7 @@ user = User.create(
 profile = user.create_profile(
   first_name: 'Chris',
   last_name: 'Tzitzas',
-  status: 1,
+  user_type: 1,
   location: Location.find(93)
 )
 
@@ -79,7 +79,7 @@ puts 'Creating fake users, profiles and listings'
   profile = user.create_profile(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    status: rand(1..4),
+    user_type: rand(1..4),
     location: Location.offset(offset).first
   )
   puts profile.errors.full_messages
