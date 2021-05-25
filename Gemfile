@@ -61,3 +61,5 @@ gem "enum_select_rails", "~> 0.3.0"
 gem "aws-sdk-s3", "~> 1.95"
 
 gem "cancan", "~> 1.6"
+
+gem "stripe", "~> 5.33"

@@ -1,12 +1,17 @@
 <h1><%= @listing.ad_type.capitalize %> - <%= @listing.year %> <%= @listing.make %> <%= @listing.model %> </h1>
 <h2><%= number_to_currency(@listing.price) %></h2>
 
+
+
 <div>
-  <% if can? :update, Listing %>
-    <%= link_to 'Edit', edit_listing_path(@listing) %>
-  <% end %>
-  <% if can? :update, Listing %>
-    <%= link_to 'Delete', listing_path(@listing), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if user_signed_in? %>
+    <%= button_tag 'Buy', data: { stripe:'payment', session_id: @session_id, public_key: Rails.application.credentials.dig(:stripe, :public_key) } %>
+    <% if can? :update, @listing %>
+      <%= link_to 'Edit', edit_listing_path(@listing) %>
+    <% end %>
+    <% if can? :update, @listing %>
+      <%= link_to 'Delete', listing_path(@listing), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   <% end %>
 </div>
 
@@ -36,3 +41,6 @@
 </div>
 
 <%= link_to 'Back', listings_path %>
+
+<%= javascript_include_tag "https://js.stripe.com/v3/" %>
+<%= javascript_pack_tag 'stripe' %>

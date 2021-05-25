@@ -3,24 +3,28 @@ class Ability
 
   def initialize(user)
 
-      user ||= User.new
+      # user ||= User.new
 
-      if user.admin?
 
-        can :manage, :all
 
-      else
-        can :edit, Listing do |listing|
-          listing.user == user
-        end
+    if user.admin?
 
-        can :update, Listing do |listing|
-          listing.user == user
-        end
-        can :destroy, Listing do |listing|
-          listing.user == user
-        end
+      can :manage, :all
+
+    else
+      can :edit, Listing do |listing|
+        listing.user == user
       end
+
+      can :update, Listing do |listing|
+        listing.user == user
+      end
+      can :destroy, Listing do |listing|
+        listing.user == user
+      end
+      
+    end
+  
 
       
 
