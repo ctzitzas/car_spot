@@ -3,8 +3,8 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   def index
-    # Add .eager_load(:user)
-    @listings = Listing.active
+    
+    @listings = Listing.active.eager_load(:user)
   end
 
   def new
@@ -33,8 +33,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-    # Add .eager_load(:user, :location)
-    @profile = Profile.find(@listing.user.id)
+    @profile = Profile.eager_load(:user, :location).find(@listing.user.id)
     stripe_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       client_reference_id: current_user.id,
