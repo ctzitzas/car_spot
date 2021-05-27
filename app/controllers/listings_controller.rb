@@ -34,27 +34,29 @@ class ListingsController < ApplicationController
 
   def show
     @profile = Profile.eager_load(:user, :location).find(@listing.user.id)
-    stripe_session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      client_reference_id: current_user.id,
-      customer_email: current_user.email,
-      line_items:[{
-        amount: (@listing.price * 100).to_i,
-        name: (@listing.year + ' ' + @listing.make + ' ' + @listing.model),
-        currency: 'aud',
-        quantity: 1,
-        images: @listing.images.empty? ? nil : [@listing.images.first.service_url]
-      }],
-      payment_intent_data: {
-        metadata: {
-          listing_id: @listing.id,
-          user_id: current_user.id
-        }
-      },
-      success_url: "#{root_url}/purchases/success?listingId=#{@listing.id}",
-      cancel_url: "#{root_url}listings"
-    )
+    unless current_user == nil 
+      stripe_session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        client_reference_id: current_user.id,
+        customer_email: current_user.email,
+        line_items:[{
+          amount: (@listing.price * 100).to_i,
+          name: (@listing.year + ' ' + @listing.make + ' ' + @listing.model),
+          currency: 'aud',
+          quantity: 1,
+          images: @listing.images.empty? ? nil : [@listing.images.first.service_url]
+        }],
+        payment_intent_data: {
+          metadata: {
+            listing_id: @listing.id,
+            user_id: current_user.id
+          }
+        },
+        success_url: "#{root_url}/purchases/success?listingId=#{@listing.id}",
+        cancel_url: "#{root_url}listings"
+      )
     @session_id = stripe_session.id
+    end
   end
 
   def destroy

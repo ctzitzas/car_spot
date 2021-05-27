@@ -43,6 +43,11 @@
     </div>
 
     <div class="fields">
+      <%= form.label :images %>
+      <%= form.file_field :images, accept: 'image/png, image/jpg, image/jpeg' %>
+    </div>
+
+    <div class="fields">
       <%= profile_form.label :location %><br />
       <%= collection_select(
         :location,

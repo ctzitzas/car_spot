@@ -9,7 +9,7 @@
   </div>
   <div class="nav-account">
     <% if user_signed_in? %>
-    <p class='nav-username'><%= current_user.username %></p>
+    <%= link_to current_user.username, profile_path(current_user), class: 'nav-username' %>
     <%= link_to 'Create listing', new_listing_path, class: 'nav-link' %>
     <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
   <% else %>

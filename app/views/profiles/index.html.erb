@@ -1,0 +1,7 @@
+<h1>Car for sale</h1>
+
+<ul>
+  <% @profiles.each do |profile| %>
+    <li><%= profile.user.username %> <%= link_to "Show", profile %></li>
+  <% end %>
+</ul>
