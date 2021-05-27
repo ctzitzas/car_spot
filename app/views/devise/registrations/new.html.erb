@@ -7,12 +7,12 @@
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -20,33 +20,33 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
+  <br>
   <%= f.fields_for :profile, resource.build_profile do |profile_form| %>
     <div class="fields">
       <%= profile_form.label :first_name %><br />
       <%= profile_form.text_field :first_name %>
     </div>
-
+    <br>
     <div class="fields">
       <%= profile_form.label :last_name %><br />
       <%= profile_form.text_field :last_name %>
     </div>
-
+    <br>
     <div class="fields">
       <%= profile_form.label :user_type %><br />
       <%= profile_form.enum_select :user_type %>
     </div>
-
+    <br>
     <div class="fields">
-      <%= form.label :images %>
-      <%= form.file_field :images, accept: 'image/png, image/jpg, image/jpeg' %>
+      <%= profile_form.label :profile_image %><br>
+      <%= profile_form.file_field :images, accept: 'image/png, image/jpg, image/jpeg' %>
     </div>
-
+    <br>
     <div class="fields">
       <%= profile_form.label :location %><br />
       <%= collection_select(
@@ -60,7 +60,7 @@
       ) %>
     </div>
   <% end %>
-
+  <br>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
