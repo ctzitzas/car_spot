@@ -38,6 +38,7 @@
   <p> <%= @profile.location.region %></p>
   <p> <%= @profile.user_type.capitalize %></p>
   <p> Posted <%= time_ago_in_words(@listing.created_at) %> ago </p>
+  <%= link_to 'Profile page', profile_path(@profile) %>
 </div>
 
 <%= link_to 'Back', listings_path %>

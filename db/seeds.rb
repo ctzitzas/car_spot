@@ -66,7 +66,7 @@ profile = user.create_profile(
 
 puts 'Creating fake users, profiles and listings'
 
-10.times {
+20.times {
   user = User.create(
     username: Faker::Internet.username,
     email: Faker::Internet.safe_email,
@@ -86,23 +86,27 @@ puts 'Creating fake users, profiles and listings'
 
   make = Faker::Vehicle.make
 
-  listing = user.listings.create(
-    ad_type: 1,
-    status: 1,
-    price: rand(10..1000) * 100,
-    year: Faker::Vehicle.year,
-    make: make,
-    model: Faker::Vehicle.model(make_of_model: make),
-    odometer: Faker::Vehicle.kilometrage,
-    engine: Faker::Vehicle.engine,
-    transmission: Faker::Vehicle.transmission,
-    trim: 'base model',
-    body_style: Faker::Vehicle.car_type,
-    registration_number: Faker::Vehicle.license_plate,
-    roadworthy: rand(1..3),
-    condition: rand(1..4),
-    description: Faker::Vehicle.standard_specs[0]
-  )
+  listing = nil
+
+  rand(1..2).times {
+    listing = user.listings.create(
+      ad_type: rand(1..2),
+      status: 1,
+      price: rand(10..1000) * 100,
+      year: Faker::Vehicle.year,
+      make: make,
+      model: Faker::Vehicle.model(make_of_model: make),
+      odometer: Faker::Vehicle.kilometrage,
+      engine: Faker::Vehicle.engine,
+      transmission: Faker::Vehicle.transmission,
+      trim: 'base model',
+      body_style: Faker::Vehicle.car_type,
+      registration_number: Faker::Vehicle.license_plate,
+      roadworthy: rand(1..3),
+      condition: rand(1..4),
+      description: Faker::Vehicle.standard_specs[0]
+    )
+  }
   puts listing.errors.full_messages
 }
 

@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
 
   def index
     
-    @listings = Listing.active.eager_load(:user)
+    @listings = Listing.for_sale.eager_load(:user)
   end
 
   def new
