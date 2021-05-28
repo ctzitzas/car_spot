@@ -63,3 +63,5 @@ gem "aws-sdk-s3", "~> 1.95"
 gem "cancan", "~> 1.6"
 
 gem "stripe", "~> 5.33"
+
+gem "rails_serve_static_assets", "~> 0.0.5"
