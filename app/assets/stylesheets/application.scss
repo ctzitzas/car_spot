@@ -16,8 +16,15 @@
 
  @import 'bootstrap/scss/bootstrap';
 
+ $dark: #424b54;
+ $danger: #FF5A5F;
+
+ p {
+  font-family: 'Open Sans', sans-serif;
+ }
+
  .nav-username {
-   color: red;
+   color: $danger;
    display: flex;
    margin: 0px;
  }
@@ -32,3 +39,27 @@
    margin: 2px;
    padding: 5px;
  }
+
+ .navbar-brand{
+  font-family: 'Russo One', sans-serif;
+  font-size: 40px;
+ }
+
+.nav-item {
+  font-family: 'Russo One', sans-serif;
+  font-size: 28px;
+}
+
+.nav-account {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+}
+
+.col-md-4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    max-height: 150px;
+  }
+}

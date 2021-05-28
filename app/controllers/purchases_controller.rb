@@ -2,6 +2,7 @@ class PurchasesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:webhook]
 
   def success
+      # Loads listing from params recieved fromm webhook
     @listing = Listing.find(params[:listingId])
   end
 

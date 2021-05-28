@@ -30,6 +30,7 @@ class Ability
       can :update, Profile do |profile|
         profile.user == user
       end
+      
       can :destroy, Profile do |profile|
         profile.user == user
       end

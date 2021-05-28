@@ -5,65 +5,65 @@
 </ul>
 
 <%= form_with model: listing, local:true do |form| %>
-  <div>
+  <div class="mb-3">
     <%= form.label :ad_type %><br>
-    <%= form.enum_select :ad_type %>
+    <%= form.enum_select :ad_type, class: "form-control" %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :year %><br>
-    <%= form.number_field :year, min: 1900, max:2000, step: 1 %>
+    <%= form.number_field :year, min: 1900, max:2000, step: 1, class: "form-control" %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :make %><br>
     <%= form.text_field :make %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :model %><br>
     <%= form.text_field :model %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :price %><br>
     <%= form.number_field :price, min: 5, step: 5 %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :odometer %><br>
     <%= form.text_field :odometer %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :engine %><br>
     <%= form.text_field :engine %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :transmission %><br>
     <%= form.text_field :transmission %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :trim %><br>
     <%= form.text_field :trim %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :body_style %><br>
     <%= form.text_field :body_style %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :registraion_number %><br>
     <%= form.text_field :registration_number %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :roadworthy %><br>
     <%= form.enum_select :roadworthy %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :condition %><br>
     <%= form.enum_select :condition %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= form.label :description %><br>
     <%= form.text_area :description %>
   </div>
-  <div>
+  <div class="mb-3">
    <%= form.label :images %>
-   <%= form.file_field :images, accept: 'image/png, image/jpg, image/jpeg' %>
+   <%= form.file_field :images, accept: 'image/png, image/jpg, image/jpeg', class: "form-control", type: 'file', id: 'formFile' %>
   </div>
-  <%= form.submit %>
+  <%= form.submit class: "btn btn-primary" %>
 <% end %>

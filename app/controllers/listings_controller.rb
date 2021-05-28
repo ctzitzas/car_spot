@@ -2,9 +2,9 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
+  # Gets all listings with the ad_type 'for sale' from the database
   def index
-    
-    @listings = Listing.for_sale.eager_load(:user)
+    @listings = Listing.for_sale.includes(:user, :profile)
   end
 
   def new
@@ -33,6 +33,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    # loads profile of the ad creator for use in profile section of listing
     @profile = Profile.eager_load(:user, :location).find(@listing.user.id)
     unless current_user == nil 
       stripe_session = Stripe::Checkout::Session.create(
@@ -73,6 +74,7 @@ class ListingsController < ApplicationController
   end
 
   def set_listing
+    # Loads the listing required for for controller actions show, edit, update, destroy
     @listing = Listing.eager_load(:user, :profile).find(params[:id])
   end
 

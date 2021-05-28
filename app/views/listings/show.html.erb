@@ -5,7 +5,7 @@
 
 <div>
   <% if user_signed_in? %>
-    <%= button_tag 'Buy', data: { stripe:'payment', session_id: @session_id, public_key: Rails.application.credentials.dig(:stripe, :public_key) } %>
+    <%= button_tag 'Buy', data: { stripe:'payment', session_id: @session_id, public_key: Rails.application.credentials.dig(:stripe, :public_key), class: 'btn btn-danger', type: 'button' } %>
     <% if can? :update, @listing %>
       <%= link_to 'Edit', edit_listing_path(@listing) %>
     <% end %>

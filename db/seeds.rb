@@ -49,21 +49,6 @@ profile = user.create_profile(
   location: Location.find(93)
 )
 
-puts 'Creating test account'
-
-user = User.create(
-  username: 'ctzitzas',
-  email: 'ctzitzas@gmail.com',
-  password: 'password123'
-)
-
-profile = user.create_profile(
-  first_name: 'Chris',
-  last_name: 'Tzitzas',
-  user_type: 1,
-  location: Location.find(93)
-)
-
 puts 'Creating fake users, profiles and listings'
 
 20.times {

@@ -1,3 +1,25 @@
 <div class="hero-container">
   <%= image_tag 'hero_image.jpg', class: 'hero-image' %>
 </div>
+
+<br>
+<h2>Latest Listing</h2>
+<br>
+
+<div class="list-container">
+    <div class="card mb-3" style="max-width: 800px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <%= @listing.images.attached? ? (image_tag @listing.images.first, alt:'Image of car for sale') : (image_tag 'default_car', alt:'Default car image') %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= @listing.year %> <%= @listing.make %> <%= @listing.model %> | <%= number_to_currency(@listing.price) %> <%= link_to "Show", @listing %></h5>
+            <p class="card-text"><%= @listing.odometer %> kms</p>
+            <p class="card-text"><%= @listing.transmission %></p>
+            <p class="card-text"><%= @listing.user.profile.location.region %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
