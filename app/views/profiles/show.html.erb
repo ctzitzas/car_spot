@@ -8,16 +8,13 @@
     <% if can? :update, @profile %>
       <%= link_to 'Edit account', edit_user_registration_path(@profile) %><br><br>
     <% end %>
-    <% if can? :update, @profile %>
-      <%= link_to 'Delete account', profile_path(@profile), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
   <% end %>
 </div>
 
 <h1>Profile</h1>
 
 <div>
-  <%= @profile.images.attached? ? (image_tag @profile.images.first, alt:'Profile picture') : (image_tag 'default_profile', alt:'Default profile picture') %>
+  <%= @profile.profile_image.attached? ? (image_tag @profile.profile_image.first, alt:'Profile picture') : (image_tag 'default_profile', alt:'Default profile picture') %>
 </div>
 
 <p><%= @profile.user.username %></p>

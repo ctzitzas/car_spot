@@ -44,19 +44,17 @@
     <br>
     <div class="fields">
       <%= profile_form.label :profile_image %><br>
-      <%= profile_form.file_field :images, accept: 'image/png, image/jpg, image/jpeg' %>
+      <%= profile_form.file_field :profile_image, accept: 'image/png, image/jpg, image/jpeg' %>
     </div>
     <br>
     <div class="fields">
       <%= profile_form.label :location %><br />
-      <%= collection_select(
-        :location,
-        :region_id,
+      <%= profile_form.collection_select(
+        :location_id,
         Location.all,
         :id,
         :region,
-        {},
-        { :multiple => false }
+        :multiple => false
       ) %>
     </div>
   <% end %>
