@@ -26,6 +26,8 @@ module CarSpot
 
     config.assets.initialize_on_precompile = false
 
+    config.serve_static_assets = true
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
